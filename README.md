@@ -9,7 +9,7 @@
 
 This was an easy ELF RE challenge ( Intro )
 
-> Note: I've been learning RE recently, so this reflects a beginner's approach. There are likely faster methods.
+> Note: I've been learning RE recently, so this reflects a beginner's approach. There are likely faster methods. Honestly, this challenge is straightforward enough that a write-up is overkill but it's a good excuse to document the thought process and practice structured analysis.
 
 
 
