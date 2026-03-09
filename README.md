@@ -45,7 +45,7 @@ strings challenge_binary | grep -i ST4F1T{.*}
 ST4F1T{h4nt4_zl9ti}
 ```
 
-Sure enough, here's the fake flag. When using the strings without grep with can see that there is string "SHOW_FAKE_FLAG", intially i thougth this was a env variable which would hint that the binary checks for env var then shows a flag based on that ( spoiler : this was a bait )
+Sure enough, here's the fake flag. When using the strings without grep we can see that there is a string "SHOW_FAKE_FLAG", intially i thougth this was a env variable which would hint that the binary checks for env var then shows a flag based on that ( spoiler : this was a bait )
 
 ### Disassembly 
 
