@@ -51,13 +51,11 @@ Sure enough, here's the fake flag. When using the strings without grep we can se
 
 Tool used: `gdb`
 
-first thing i did is checking for function names and any symbols
+first thing i did is checking for function names and symbols
 
 ```bash
 info functions
 ```
-
-output :
 ![gdb1](screenshots/gdb1.png)
 
 Important here : `reveal_real_flag`, `main`
@@ -68,24 +66,22 @@ next step is disassembling main
 disassemble main
 ```
 
-output : 
 ![gdb2](screenshots/gdb2.png)
 
-We can see that the program actually calls `getenv()` but no `reveal_real_flag()` call, thats weird, you see that the main function can't show the real flag its just a decoy as stated before. 
+We can see that the program actually calls `getenv()` but no `reveal_real_flag()` call, thats weird, you see that the main function can't show the real flag its just a decoy. 
 
 so : 
 ```bash
 disassemble reveal_real_flag
 ```
 
-output:
 ![gdb3](screenshots/gdb3.png)
 
-If you understand a bit of assembly you can see that after reserving 48 bytes of memory for the local variables, then sets one of them to `0x5a` (90) and another to `0x0` (0), lets call them V1 and V2, then we jump to line `+62` and compare the V2 to `0x16` (22) and then jump if below to line `+22`.
+If you understand a bit of assembly you can see that after reserving 48 bytes of memory for the local variables, the program sets one of them to `0x5a` (90) and another to `0x0` (0), lets call them V1 and V2, then we jump to line `+62` and compare the V2 to `0x16` (22) and then jump if below to line `+22`.
 
 ![gdb4](screenshots/gdb4.png)
 
-This looks like a for loop so lets inspect the body, inspecting the body we can see that on line `+22` we compute the address containing `real_flag_xor`, from here you already know its xor encrypted and the key is probably V1 `0x5a`, the following instructions basically loop through the bytes of the xor encrypted flag and decrypt them one by one !
+This looks like a for loop so lets inspect the body. Inspecting the body we can see that on line `+22` we compute the address containing `real_flag_xor`, from here you already know its xor encrypted and the key is probably V1 `0x5a`, the following instructions basically loop through the bytes of the xor encrypted flag and decrypt them one by one !
 
 PS : since gdb shows `real_flag_xor` address in static mode we can conclude that its probably in .data or .rodata sections of the binary. 
 
