@@ -7,7 +7,7 @@
 
 ## Challenge Description
 
-This was an hard'ish ELF RE challenge ( rwina ), starting with a .pdf file
+This was a hard'ish ELF RE challenge ( rwina ), starting with a .pdf file
 
 > Note: Again this reflects a beginner's approach. This challenge isn't as straightforward as the intro one, i didn't even complete it the day of the CTF couldn't focus.
 
