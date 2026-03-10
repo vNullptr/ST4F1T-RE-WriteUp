@@ -67,7 +67,7 @@ This is stuck here now, lets not waste anymore time and try to debug this
 
 Tool used: `radare2`
 
-This one was a bit "complicated" and designed to confuse, so i jumped directly on radare2 ( the trugth is i tried finding stuff on gdb and ghidra but i ended up just finding a few hints but nothing concrete )
+This one was a bit "complicated" and designed to confuse, so i jumped directly on radare2 ( the truth is i tried finding stuff on gdb and ghidra but i ended up just finding a few hints but nothing concrete )
 
 ```bash
 r2 binary.elf
@@ -87,7 +87,7 @@ Now we run `pdf`
 
 ![r3](screenshots/radare3.png)
 
-As you can see at the entry point the program is pushing the value stored at the address stored in "main" into the `rdi` register, in ELF ASM we know that `rdi` register is the first argument based on the calling convention (radare2 is making our lives less miserable and giving us the address its pointing to)
+As you can see at the entry point the program is computing the address of "main" into the `rdi` register, in ELF ASM we know that `rdi` register is the first argument based on the calling convention (radare2 is making our lives less miserable and giving us the address its pointing to)
 
 A thing to keep in mind, is we didn't have "main" displayed we'd still assume its pointing to the entry point of the program because loaders call `_start` which calls `__libc_start_main` with the `main` address as the first argument.
 
@@ -155,7 +155,7 @@ dc
 
 ![r9](screenshots/radare9.png)
 
-Let run it again 
+Lets run it again 
 
 ![r10](screenshots/radare10.png)
 
@@ -176,7 +176,7 @@ dc
 ![r12](screenshots/radare12.png)
 
 The program shows a URL ...
-Apparently we managed to land in a branch of the binary that shows us this URL ( im too tired to investigate why, i'll maybe do it later and update this part)
+Apparently we managed to land in a branch of the binary that shows us this URL ( im too tired to investigate why and explain it, i'll maybe do it later and update this part)
 
 ## Solution
 
@@ -275,7 +275,7 @@ ST4F1T{Schr0dinger_s0lved_me}
 
 ## Extra
 
-- Might be over detailed.
+- Might be over detailed leave a star and feel free to correct me if im wrong about something.
 
 
 *Write-up by Ryn — ST4F1T CTF [2026]*
